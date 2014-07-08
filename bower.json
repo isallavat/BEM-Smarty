@@ -1,0 +1,13 @@
+{
+  "name": "bem-smarty",
+  "version": "0.0.1",
+  "description": "Implementation of BEM on Smarty",
+  "bugs": "https://github.com/panda-crox/BEM-Smarty/issues",
+  "ignore": [
+    "node_modules",
+    "libs"
+  ],
+  "dependencies": {
+    "smarty": "git://github.com/panda-crox/smarty.git#v3.1.19"
+  }
+}

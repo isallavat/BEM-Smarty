@@ -1,0 +1,26 @@
+{
+  "name": "bem-smarty",
+  "version": "0.0.1",
+  "description": "Implementation of BEM on Smarty",
+  "main": "index.php",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panda-crox/BEM-Smarty.git"
+  },
+  "keywords": [
+    "BEM",
+    "Smarty"
+  ],
+  "author": "panda-crox",
+  "license": "MIT License (MIT)",
+  "bugs": {
+    "url": "https://github.com/panda-crox/BEM-Smarty/issues"
+  },
+  "homepage": "https://github.com/panda-crox/BEM-Smarty",
+  "dependencies": {
+    "bower": "~1.3.7"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  }
+}

@@ -1,0 +1,8 @@
+libs/
+node_modules/
+templates_c/
+freeze/
+.DS_Store
+.idea
+.project
+.svn
