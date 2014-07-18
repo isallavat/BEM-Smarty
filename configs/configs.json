@@ -1,0 +1,5 @@
+{
+	"bundlesDir": "desktop.bundles",
+	"blocksDir": "desktop.blocks",
+	"Techs": ["styl"]
+}

@@ -1,0 +1,6 @@
+[
+	{ "block": "page" },
+	{ "block": "header" },
+	{ "block": "auth" },
+	{ "block": "footer" }
+]

@@ -1,14 +1,20 @@
 <?php
+	error_reporting(E_ALL & ~E_NOTICE);
+	date_default_timezone_set("Europe/Moscow");
+
 	define('SMARTY_DIR', str_replace("\\", "/", getcwd()).'/libs/smarty/');
+	define('_ROOT_', $_SERVER['DOCUMENT_ROOT']);
 
 	require_once(SMARTY_DIR . 'Smarty.class.php');
 	$smarty = new Smarty();
 
 	$smarty->template_dir = '';
-	$smarty->compile_dir = 'templates_c/';
-	$smarty->config_dir = 'configs/';
-	$smarty->cache_dir = 'cache/';
+	$smarty->compile_dir = 'templates_c';
+	$smarty->config_dir = 'configs';
+	$smarty->cache_dir = 'cache';
 	$smarty->caching  = false;
+
+	$configs = json_decode(file_get_contents(_ROOT_ . '/configs/configs.json'), true);
 
 	//** раскомментируйте следующую строку для отображения отладочной консоли
 	//$smarty->debugging = true;
@@ -36,6 +42,9 @@
 			if (is_array($branch)) {
 				if ($branch['block']) {
 					$cls = $branch['block'];
+				}
+				else if ($branch['block'] && $branch['elem']) {
+					$cls = $branch['block'] . '__' . $branch['elem'];
 				}
 				else if ($branch['elem']) {
 					$cls = $ctx['block'] . '__' . $branch['elem'];
@@ -119,13 +128,14 @@
 
 	function get_tpl($cls, $ctx) {
 		global $smarty;
+		global $configs;
 		$names = explode(' ', $cls);
 
 		foreach ($names as $name) {
 			if (!$name) continue;
 			$_name = explode('__', $name);
 
-			$tpl = 'blocks/' . $_name[0];
+			$tpl = $configs['blocksDir'] . '/' . $_name[0];
 			if ($_name[1]) {
 				$_name[1] = explode('_', $_name[1]);
 				$tpl .= '/__' . $_name[1][0];
@@ -142,6 +152,7 @@
 		}
 	}
 
+	exec('node ' . _ROOT_ . '/static.js');
 
-	$smarty->display('blocks/index.tpl');
+	$smarty->display($configs['bundlesDir'] . '/index/index.tpl');
 ?>

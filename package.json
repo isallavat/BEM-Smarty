@@ -22,5 +22,10 @@
   },
   "scripts": {
     "postinstall": "bower install"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.5",
+    "stylus": "~0.47.1",
+    "nib": "~1.0.3"
   }
 }
